@@ -2,6 +2,9 @@
     "development": {
         "ENV": "DATABASE_URL"
     },
+    "staging": {
+        "ENV": "DATABASE_URL"
+    },
     "defaultEnv": {
         "ENV": "NODE_ENV"
     },
