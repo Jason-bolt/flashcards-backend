@@ -69,7 +69,7 @@ export const cardQueries: ICardqueries = {
         ) AS card_counts ON bins.bin_number = card_counts.bin_number
     ),
     AreCardsDone AS (
-        SELECT count(id) FROM cards WHERE user_id = 6 AND bin::int < '11'
+        SELECT count(id) FROM cards WHERE user_id = $1 AND bin::int < '11'
     )
     SELECT 
         COALESCE(zc.id, pc.id) AS id,
