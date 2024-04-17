@@ -23,6 +23,7 @@ const cardSchema = `#graphql
         bin: String
         bins: [bins!]
         are_cards_done: Boolean
+        card_count: Int
     }
 
     # Inputs
@@ -70,7 +71,6 @@ const cardSchema = `#graphql
         fetchDisplayCard: DisplayCardResponse!
         fetchUserCards(data: searchFilterCardInput): CardsResponse!
         fetchCardById(id: Int!): CardResponse!
-        # areCardsDone: Boolean!
     }
 `;
 

@@ -23,7 +23,6 @@ const {
   fetchUserCards,
   answerCard,
   fetchCardById,
-  // areCardsDone,
 } = CardController;
 
 const cardResolvers = {
@@ -38,7 +37,6 @@ const cardResolvers = {
     ),
     deleteCard: combineResolvers(deleteCard),
     answerCard: combineResolvers(answerCard),
-    // areCardsDone: areCardsDone,
   },
   Query: {
     fetchDisplayCard: combineResolvers(fetchDisplayCard),

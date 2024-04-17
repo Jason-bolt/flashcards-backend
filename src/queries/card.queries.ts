@@ -70,6 +70,9 @@ export const cardQueries: ICardqueries = {
     ),
     AreCardsDone AS (
         SELECT count(id) FROM cards WHERE user_id = $1 AND bin::int < '11'
+    ),
+    CardsCount AS (
+        SELECT count(id) FROM cards WHERE user_id = $1
     )
     SELECT 
         COALESCE(zc.id, pc.id) AS id,
@@ -77,6 +80,7 @@ export const cardQueries: ICardqueries = {
         COALESCE(zc.bin, pc.bin) AS bin,
         COALESCE(zc.definition, pc.definition) AS definition,
         COALESCE(bc.bins_and_counts, '[]') AS bins,
+        cc.count as card_count,
         CASE
             WHEN acd.count > 0 THEN FALSE
             ELSE TRUE
@@ -91,6 +95,8 @@ export const cardQueries: ICardqueries = {
         BinCounts bc ON TRUE
     LEFT JOIN
         AreCardsDone acd ON TRUE
+    LEFT JOIN
+        CardsCount cc ON TRUE
     WHERE u.id = $1;
     `,
   fetchCardById: `

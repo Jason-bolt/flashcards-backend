@@ -186,20 +186,6 @@ class CardService implements ICardService {
     }
   }
   
-  // async areCardsDone(user_id: number): Promise<Boolean> {
-  //   try {
-  //     logger.info(`***** Card Service *****: Fetching card by id - ${id}`);
-
-  //     const card = await db.oneOrNone(cardQueries.fetchCardById, [id]);
-  //     logger.info(`Card fetched - ${JSON.stringify(card)}`);
-  //     return card;
-  //   } catch (error) {
-  //     logger.error(
-  //       `An error occured when fetching a card by id - ${JSON.stringify(error)}`
-  //     );
-  //     throw error;
-  //   }
-  // }
 }
 
 const cardService = new CardService();
