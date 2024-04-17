@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "npm install && rimraf ./build && tsc",
-    "start": "node build/index.ts",
+    "start": "npm run migrate:up && node build/index.js",
     "migrate": "db-migrate --migrations-dir ./src/config/database/migrations",
     "migrate:up": "npm run migrate up",
     "migrate:down": "npm run migrate down",
