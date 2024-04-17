@@ -1,0 +1,20 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR NOT NULL,
+    password VARCHAR NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE cards (
+    id SERIAL PRIMARY KEY,
+    word VARCHAR NOT NULL,
+    definition VARCHAR NOT NULL,
+    bin VARCHAR DEFAULT '0',
+    time_to_appear TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    wrongly_answered_count INT NOT NULL DEFAULT 0,
+    user_id INT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
